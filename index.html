@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="emoji__search">
+    <div class="emoji__search--container">
+      <label class="emoji__search--label">
+        Search by Title
+      </label>
+      <input type="text" placeholder="Emoji" onchange="onSearchChange(event)">
+    </div>
+    <select id="filter" onchange="filterEmojis(event)">
+        <option value="" disabled selected>Sort</option>
+        <option value="AtoZ">Alphabetical A to Z</option>
+        <option value="ZtoA">Alphabetical Z to A</option>
+        <option value="NewtoOld">Newest to oldest</option>
+        <option value="OldtoNew">Oldest to newest</option>
+    </select>
+  </div>
+  <div class="emoji__list">
+    <div class="emoji">
+      <div class="emoji__name">
+        Emoji Name
+      </div>
+      <p class="emoji__category">
+        Emoji Category
+      </p>
+      <p class="emoji__group">
+        Emoji Group
+      </p>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+<footer>
+  <p class="footer__text">&copy; 2023 Emoji Hub. All rights reserved.</p>
+</footer>
+
+</html>

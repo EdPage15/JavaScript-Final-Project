@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.emoji__list {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.emoji {
+  width: 22%;
+  background-color: #fffff1;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 4px 16px;
+}
+
+.emoji:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.emoji__name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.emoji__search {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.emoji__search--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.emoji__search--label {
+  padding-right: 8px;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #242424;
+}
+
+.footer__text {
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 0;
+    font-size: 14px;
+}
+
+
