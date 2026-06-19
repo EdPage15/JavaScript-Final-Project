@@ -13,9 +13,11 @@
   <div class="emoji__search">
     <div class="emoji__search--container">
       <label class="emoji__search--label">
-        Search by Title
+        Search by Name
       </label>
-      <input type="text" placeholder="Emoji" onchange="onSearchChange(event)">
+      <div class="emoji__search--bar">
+        <input type="text" id="search" placeholder="Emoji" onchange="onSearchChange(event)">
+      </div>  
     </div>
     <select id="filter" onchange="filterEmojis(event)">
         <option value="" disabled selected>Sort</option>
@@ -25,19 +27,8 @@
         <option value="OldtoNew">Oldest to newest</option>
     </select>
   </div>
-  <div class="emoji__list">
-    <div class="emoji">
-      <div class="emoji__name">
-        Emoji Name
-      </div>
-      <p class="emoji__category">
-        Emoji Category
-      </p>
-      <p class="emoji__group">
-        Emoji Group
-      </p>
-    </div>
-  </div>
+  <div class="emoji__list results"></div>
+  <p id="error" class="error"></p>
   <script src="index.js"></script>
 </body>
 

@@ -49,14 +49,14 @@ body {
 /* FOOTER */
 
 footer {
-    background-color: #242424;
+  background-color: #242424;
 }
 
 .footer__text {
-    color: #ffffff;
-    text-align: center;
-    padding: 60px 0;
-    font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  padding: 60px 0;
+  font-size: 14px;
 }
 
 

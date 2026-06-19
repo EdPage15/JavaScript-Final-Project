@@ -3,10 +3,60 @@
 const emojiListEl = document.querySelector(".emoji__list");
 const name = localStorage.getItem("name");
 
-async function onSearchChange(event) {
-    const name = event.target.value;
-    renderEmoji(name);
+function onSearchChange(event) {
+    // ===== CONFIGURATION =====
+    const API_BASE_URL = "https://emojihub.yurace.pro/api/all"; // Replace with your API endpoint
+
+    // ===== DOM ELEMENTS =====
+    const searchInput = document.getElementById("search");
+    const resultsList = document.getElementById("results");
+    const errorMsg = document.getElementById("error");
+
+    // ===== HELPER: Render results =====
+    function renderResults(items) {
+        resultsList.innerHTML = "";
+        if (!items || items.length === 0) {
+            resultsList.innerHTML = "<li>No results found</li>";
+            return;
+        }
+        items.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item.name || JSON.stringify(item);
+            resultsList.appendChild(li);
+        });
+    }
+
+    // ===== HELPER: Fetch from API =====
+    async function fetchResults(query) {
+        try {
+            errorMsg.textContent = "";
+            resultsList.innerHTML = "<li>Loading...</li>";
+
+            const response = await fetch(`${API_BASE_URL}?q=${encodeURIComponent(query)}`);
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+            const data = await response.json();
+            renderResults(data.results || data); // Adjust based on your API's JSON structure
+        } catch (err) {
+            resultsList.innerHTML = "";
+            errorMsg.textContent = `Error: ${err.message}`;
+        }
+    }
+
+    // ===== EVENT: Search as you type (debounced) =====
+    let debounceTimer;
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.trim();
+        clearTimeout(debounceTimer);
+        if (query.length < 2) {
+            resultsList.innerHTML = "";
+            return;
+        }
+        debounceTimer = setTimeout(() => fetchResults(query), 300);
+    });
 }
+
+
 
 async function renderEmoji(name) {
     const emoji = await fetch(`https://emojihub.yurace.pro/api/all`);
@@ -25,6 +75,7 @@ async function renderEmoji(name) {
     // else if (filter === "") {
     //     emojiData.sort((a, b) => b. - a.);
     // }
+
 
 }
 
