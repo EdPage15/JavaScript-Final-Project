@@ -1,39 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <div class="emoji__search">
-    <div class="emoji__search--container">
-      <label class="emoji__search--label">
-        Search by Name
-      </label>
-      <div class="emoji__search--bar">
-        <input type="text" id="search" placeholder="Emoji" onchange="onSearchChange(event)">
-      </div>  
+  <body>
+    <div class="emoji__search">
+      <div class="emoji__search--container">
+        <label class="emoji__search--label"> Search by Name </label>
+        <div class="emoji__search--bar">
+          <input
+            type="text"
+            id="search"
+            placeholder="Emoji"
+            onchange="fetchEmoji(event)"
+          />
+        </div>
+      </div>
+      <select id="filter" onchange="filterEmojis(event)">
+        <option value="" disabled selected>sort</option>
+        <option value="A_TO_Z">Alphabetical A to Z</option>
+        <option value="Z_TO_A">Alphabetical Z to A</option>
+      </select>
     </div>
-    <select id="filter" onchange="filterEmojis(event)">
-        <option value="" disabled selected>Sort</option>
-        <option value="AtoZ">Alphabetical A to Z</option>
-        <option value="ZtoA">Alphabetical Z to A</option>
-        <option value="NewtoOld">Newest to oldest</option>
-        <option value="OldtoNew">Oldest to newest</option>
-    </select>
-  </div>
-  <div class="emoji__list results"></div>
-  <p id="error" class="error"></p>
-  <script src="index.js"></script>
-</body>
+    <div class="emoji__list results"></div>
+    <p id="error" class="error"></p>
+    <script src="index.js"></script>
+  </body>
 
-<footer>
-  <p class="footer__text">&copy; 2023 Emoji Hub. All rights reserved.</p>
-</footer>
-
+  <footer>
+    <p class="footer__text">&copy; 2026 Emoji Hub. All rights reserved.</p>
+  </footer>
 </html>
