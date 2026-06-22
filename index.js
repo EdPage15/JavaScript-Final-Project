@@ -75,8 +75,7 @@ async function renderEmoji() {
     let sortingList = (resultsList || emojiData)
 
     if (filter === "A_TO_Z") {
-        console.log("hi")
-        console.log(sortingList.sort((a, b) => {a.name.localeCompare(b.name)}));
+        sortingList.sort((a, b) => {a.name.localeCompare(b.name)});
     } 
     else if (filter === "Z_TO_A") {
         sortingList.sort((a, b) => {b.name.localeCompare(a.name)});
