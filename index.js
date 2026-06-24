@@ -48,7 +48,7 @@ function onSearchChange(event) {
         throw new Error(`HTTP error! Status: ${response.status}`);
 
       const data = await response.json();
-      renderResults(data.results || data); // Adjust based on your API's JSON structure
+      renderResults(data.results || data);
     } catch (err) {
       resultsList.innerHTML = "";
       errorMsg.textContent = `Error: ${err.message}`;
@@ -79,9 +79,6 @@ async function renderEmoji(filter) {
     else if (filter === "Z_TO_A") {
         sortingList.sort((a, b) => b.name.localeCompare(a.name));
     }
-    // else {
-    //     emojiListEl.innerHTML = emojiData.map((emoji) => emojiHTML(emoji)).join("");
-    // }
 
     emojiListEl.innerHTML = sortingList
         .map((emoji) => emojiHTML(emoji))
