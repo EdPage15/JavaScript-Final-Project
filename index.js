@@ -67,21 +67,29 @@ function onSearchChange(event) {
   });
 }
 
-async function renderEmoji() {
+async function renderEmoji(filter) {
     const emoji = await fetch(`https://emojihub.yurace.pro/api/all`);
     const emojiData = await emoji.json();
-    emojiListEl.innerHTML = emojiData.map((emoji) => emojiHTML(emoji)).join("");
-
-    let sortingList = (resultsList || emojiData)
+    
+    let sortingList = [...emojiData];
 
     if (filter === "A_TO_Z") {
-        sortingList.sort((a, b) => {a.name.localeCompare(b.name)});
+        sortingList.sort((a, b) => a.name.localeCompare(b.name));
     } 
     else if (filter === "Z_TO_A") {
-        sortingList.sort((a, b) => {b.name.localeCompare(a.name)});
+        sortingList.sort((a, b) => b.name.localeCompare(a.name));
     }
-    
-    // console.log(sortingList);
+    // else {
+    //     emojiListEl.innerHTML = emojiData.map((emoji) => emojiHTML(emoji)).join("");
+    // }
+
+    emojiListEl.innerHTML = sortingList
+        .map((emoji) => emojiHTML(emoji))
+        .join("");
+}
+
+function filterEmojis(event) {
+    renderEmoji(event.target.value);
 }
 
 function emojiHTML(emoji) {
@@ -101,10 +109,6 @@ function emojiHTML(emoji) {
     }
 
 renderEmoji(name);
-
-function filterEmojis(event) {
-    renderEmoji(event.target.value);
-}
 
 setTimeout(() => {
     renderEmoji();
